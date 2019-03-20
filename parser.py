@@ -4,3 +4,6 @@ class Parser:
 
     def get_file(self):
         return open(self.file_path, "r")
+
+    def get_pixels(self, nums = 9):
+        pass
