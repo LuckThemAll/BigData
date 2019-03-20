@@ -1,6 +1,6 @@
 import sys  # sys нужен для передачи argv в QApplication
 from PyQt5 import QtWidgets
-from main_view import MainWindow
+from View import MainWindow
 
 
 def main():

@@ -1,13 +1,24 @@
-from animation_model import Animation
+import re
+
+from PyQt5 import QtWidgets
+
+from model import AnimationModel
+from View import MainWindow
 
 
 class Controller:
-    def __init__(self, animation=Animation()):
+    def __init__(self, view, animation=AnimationModel()):
         self.animation = animation
+        self.view = view
+        self.view.OpenFile.clicked.connect(self.browse_file)
+        self.view.StartAnimation.clicked.connect(self.start_animation)
 
-    def set_animation_size(self, width, height):
-        self.animation.width = width
-        self.animation.height = height
+    def browse_file(self):
+        file = QtWidgets.QFileDialog.getOpenFileName(self, "Выберите файл")
+        self.animation.file_path = file[0]
 
-    def set_file_path(self, file_path):
-        self.animation.file_path = file_path
+    def start_animation(self):
+        pass
+
+    def stop_animation(self):
+        pass
