@@ -1,3 +1,6 @@
+import re
+
+
 class Parser:
     def __init__(self, file_path=""):
         self.file_path = file_path
@@ -7,8 +10,21 @@ class Parser:
             return open(self.file_path, "r")
         return None
 
-    def read_block(self):
+    def read_block(self, size):
+        with self.get_file() as f:
+            block = f.read(size)
+            arr = []
+            for part in block.split(","):
+                [arr.append(s) for s in re.findall(r'\b\d+\b', part)]
+            del arr[3:]
+
+    def get_animation_info(self):
         pass
+
+    def read_pixel(self):
+        pixel = {"r": None, "g": None, "b": None}
+        return pixel
+
 
     # def get_pixels(self, nums=9):
     #     block = "....."
