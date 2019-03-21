@@ -14,11 +14,11 @@ class Controller:
         self.view.StartAnimation.clicked.connect(self.start_animation)
 
     def browse_file(self):
-        file = QtWidgets.QFileDialog.getOpenFileName(self, "Выберите файл")
-        self.animation.file_path = file[0]
+        file = QtWidgets.QFileDialog.getOpenFileName(self.view, "Выберите файл")
+        self.animation.set_file_path(file[0])
 
     def start_animation(self):
-        pass
+        print(self.animation.get_info())
 
     def stop_animation(self):
         pass

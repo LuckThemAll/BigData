@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.StartAnimation = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.StartAnimation.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.StartAnimation.setObjectName("StartAnimation")
-        self.StartAnimation.setEnabled(False)
+        # self.StartAnimation.setEnabled(False)
         self.horizontalLayout.addWidget(self.StartAnimation)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.MainCanvas = QtWidgets.QGraphicsView(self.verticalLayoutWidget)

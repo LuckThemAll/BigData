@@ -42,6 +42,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="StartAnimation">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
