@@ -12,6 +12,7 @@ class AnimationModel:
         self.parser = Parser()
         self.file_handle = 0
         self.start_frame_handle = 0
+        self.is_meta_loaded = False
 
     def set_file_path(self, file_path):
         self.file_path = file_path
@@ -23,9 +24,14 @@ class AnimationModel:
         self.height = info_dict["height"]
         self.frames_num = info_dict["frames_num"]
         self.start_frame_handle = info_dict["start_frame_handle"]
+        self.file_handle = self.start_frame_handle
+        self.is_meta_loaded = True
 
     def get_pixel(self):
-        self.parser.read_pixel()
+        pixel = self.parser.read_pixel()
+        self.file_handle = pixel[1]
+        return pixel
+
 
     def get_frame(self):
         self.frame = FrameStructure(self.width, self.height)
@@ -33,6 +39,7 @@ class AnimationModel:
         for i in range(pixels_num):
             pixel = self.get_pixel()
             self.frame.update_pixel(i, pixel)
+        return self.frame
 
     def draw_frame(self):
         # self.
