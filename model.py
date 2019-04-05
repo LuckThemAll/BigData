@@ -1,3 +1,5 @@
+from PyQt5.QtGui import QColor
+
 from myparser import Parser
 from View import MainWindow
 
@@ -39,10 +41,21 @@ class AnimationModel:
         for i in range(pixels_num):
             pixel = self.get_pixel()
             self.frame.update_pixel(i, pixel)
+        a = 2
         return self.frame
 
-    def draw_frame(self):
-        # self.
+    def draw_frame(self, qp):
+        frame = self.get_frame()
+        x, y = 0, 0
+        col = QColor(0, 0, 0)
+        qp.setViewport(10, 50, self.width, self.height)
+        for index in range(frame.width * frame.height):
+            col.setRgb(frame.pixels[index]["r"], frame.pixels[index]["g"], frame.pixels[index]["b"])
+            qp.drawPoint(x, y)
+            if x == self.width:
+                x = 0
+                y = y+1
+
         pass
 
 
@@ -59,6 +72,6 @@ class FrameStructure:
             self.pixels[i] = pixel
 
     def update_pixel(self, pos, pixel):
-        self.pixels[pos]["r"] = pixel["r"]
-        self.pixels[pos]["g"] = pixel["g"]
-        self.pixels[pos]["b"] = pixel["b"]
+        self.pixels[pos]["r"] = pixel[0]["r"]
+        self.pixels[pos]["g"] = pixel[0]["g"]
+        self.pixels[pos]["b"] = pixel[0]["b"]

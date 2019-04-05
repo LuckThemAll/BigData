@@ -31,7 +31,7 @@ class Parser:
         min_size = 9
         block = self.file.read(min_size)
         c = ""
-        while c != ",":
+        while c != "]":
             c = self.read_block(1)
             block = block + c
         arr = []

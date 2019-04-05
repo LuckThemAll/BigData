@@ -16,12 +16,14 @@ class Controller:
     def browse_file(self):
         file = QtWidgets.QFileDialog.getOpenFileName(self.view, "Выберите файл")
         self.animation.set_file_path(file[0])
+        self.animation.get_info()
 
     def start_animation(self):
         if self.animation.is_meta_loaded:
-            while True:
-                self.animation.draw_frame()
-        print(self.animation.get_info())
+            # while True:
+            self.view.qp.begin(self.view)
+            self.animation.draw_frame(self.view.qp)
+            self.view.qp.end()
         a = 0
 
     def stop_animation(self):
