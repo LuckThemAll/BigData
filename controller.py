@@ -3,7 +3,7 @@ import re
 from PyQt5 import QtWidgets
 
 from model import AnimationModel
-from View import MainWindow
+from view import MainWindow
 
 
 class Controller:
@@ -20,11 +20,7 @@ class Controller:
 
     def start_animation(self):
         if self.animation.is_meta_loaded:
-            # while True:
-            self.view.qp.begin(self.view)
-            self.animation.draw_frame(self.view.qp)
-            self.view.qp.end()
-        a = 0
+            self.animation.draw_frame()
 
     def stop_animation(self):
         pass

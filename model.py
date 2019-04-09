@@ -1,19 +1,17 @@
 from PyQt5.QtGui import QColor
 
 from myparser import Parser
-from View import MainWindow
+from view import MainWindow
 
 
 class AnimationModel:
-    def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
+    def __init__(self):
+        self.parser = Parser()
+        self.width = 0
+        self.height = 0
         self.frames_num = 0
         self.current_frame = 0
         self.file_path = ""
-        self.parser = Parser()
-        self.file_handle = 0
-        self.start_frame_handle = 0
         self.is_meta_loaded = False
 
     def set_file_path(self, file_path):
@@ -21,57 +19,16 @@ class AnimationModel:
         self.parser.set_file(self.file_path)
 
     def get_info(self):
-        info_dict = self.parser.read_animation_info()
-        self.width = info_dict["width"]
-        self.height = info_dict["height"]
-        self.frames_num = info_dict["frames_num"]
-        self.start_frame_handle = info_dict["start_frame_handle"]
-        self.file_handle = self.start_frame_handle
+        self.width, self.height, self.frames_num = self.parser.read_animation_info()
+        self.current_frame = 1
         self.is_meta_loaded = True
 
-    def get_pixel(self):
-        pixel = self.parser.read_pixel()
-        self.file_handle = pixel[1]
-        return pixel
-
-
     def get_frame(self):
-        self.frame = FrameStructure(self.width, self.height)
-        pixels_num = self.width * self.height
-        for i in range(pixels_num):
-            pixel = self.get_pixel()
-            self.frame.update_pixel(i, pixel)
-        a = 2
-        return self.frame
+        frame = None
+        if self.is_meta_loaded:
+            frame = self.parser.read_frame(self.width, self.height, self.current_frame == self.frames_num)
+            self.current_frame += 1
+        return frame
 
-    def draw_frame(self, qp):
-        frame = self.get_frame()
-        x, y = 0, 0
-        col = QColor(0, 0, 0)
-        qp.setViewport(10, 50, self.width, self.height)
-        for index in range(frame.width * frame.height):
-            col.setRgb(frame.pixels[index]["r"], frame.pixels[index]["g"], frame.pixels[index]["b"])
-            qp.drawPoint(x, y)
-            if x == self.width:
-                x = 0
-                y = y+1
-
+    def draw_frame(self):
         pass
-
-
-class FrameStructure:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.pixels = {}
-        self.initialize_pixels()
-
-    def initialize_pixels(self):
-        for i in range(self.width * self.height):
-            pixel = {"r": None, "g": None, "b": None}
-            self.pixels[i] = pixel
-
-    def update_pixel(self, pos, pixel):
-        self.pixels[pos]["r"] = pixel[0]["r"]
-        self.pixels[pos]["g"] = pixel[0]["g"]
-        self.pixels[pos]["b"] = pixel[0]["b"]
