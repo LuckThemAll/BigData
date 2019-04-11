@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(277, 63)
+        MainWindow.resize(523, 285)
         MainWindow.setAutoFillBackground(True)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -25,6 +25,12 @@ class Ui_MainWindow(object):
         self.OpenFile.setGeometry(QtCore.QRect(10, 10, 121, 34))
         self.OpenFile.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.OpenFile.setObjectName("OpenFile")
+        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
+        self.graphicsView.setGeometry(QtCore.QRect(10, 50, 241, 201))
+        self.graphicsView.setObjectName("graphicsView")
+        self.paintField = QtWidgets.QWidget(self.centralwidget)
+        self.paintField.setGeometry(QtCore.QRect(260, 50, 211, 201))
+        self.paintField.setObjectName("paintField")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")

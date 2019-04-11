@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>277</width>
-    <height>63</height>
+    <width>523</width>
+    <height>285</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,6 +52,26 @@
     <property name="text">
      <string>Открыть
 Файл</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>241</width>
+      <height>201</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="paintField" native="true">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>50</y>
+      <width>211</width>
+      <height>201</height>
+     </rect>
     </property>
    </widget>
   </widget>
