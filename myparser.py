@@ -31,5 +31,5 @@ class Parser:
         if is_last_frame:
             self.file_handle = self.start_frame_handle
         else:
-            self.file_handle += 1
+            self.file_handle =  self.file.tell() + 1
         return rgb_list

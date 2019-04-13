@@ -1,4 +1,5 @@
 import re
+import threading
 
 from PyQt5 import QtWidgets
 
@@ -17,10 +18,14 @@ class Controller:
         file = QtWidgets.QFileDialog.getOpenFileName(self.view, "Выберите файл")
         self.animation.set_file_path(file[0])
         self.animation.get_info()
+        self.view.setFrameSize(self.animation.width, self.animation.height)
 
     def start_animation(self):
         if self.animation.is_meta_loaded:
-            self.animation.draw_frame()
+            threading.Timer(0.2, self.start_animation).start()
+            frame = self.animation.get_frame()
+            self.view.setFrame(frame)
 
     def stop_animation(self):
         pass
+
