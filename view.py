@@ -28,10 +28,10 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 rgb_index = QColor(frame[index], frame[index + 1], frame[index + 2]).rgba()
                 self.new_image.setPixel(x, y, rgb_index)
                 index = index + 3
-                x = x + 1
-                if x == self.frame.width():
-                    x = 0
-                    y = y + 1
+                y = y + 1
+                if y == self.frame.height():
+                    y = 0
+                    x = x + 1
             self.current_pixmap = QPixmap(self.new_image)
 
     def frame_paint_event(self, paint_event):
