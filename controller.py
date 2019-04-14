@@ -1,10 +1,6 @@
-import re
 import threading
-
 from PyQt5 import QtWidgets
-
 from model import AnimationModel
-from view import MainWindow
 
 
 class Controller:
@@ -22,10 +18,6 @@ class Controller:
 
     def start_animation(self):
         if self.animation.is_meta_loaded:
-            threading.Timer(0.2, self.start_animation).start()
             frame = self.animation.get_frame()
             self.view.setFrame(frame)
-
-    def stop_animation(self):
-        pass
-
+            threading.Timer(0.01, self.start_animation).start()

@@ -1,5 +1,5 @@
 import re
-
+import time
 
 class Parser:
     def __init__(self):
@@ -22,8 +22,9 @@ class Parser:
         return width, height, frames
 
     def read_frame(self, width, height, is_last_frame=False):
+        start_time = time.time()
         self.file.seek(self.file_handle, 0)
-        min_block_size = 10 * width * height
+        min_block_size = 12 * width * height
         block = self.file.read(min_block_size)
         while block[-2:] != "]]":
             block = block + self.file.read(1)
@@ -31,5 +32,6 @@ class Parser:
         if is_last_frame:
             self.file_handle = self.start_frame_handle
         else:
-            self.file_handle =  self.file.tell() + 1
+            self.file_handle = self.file.tell() + 1
+        print("--- %s seconds ---" % (time.time() - start_time))
         return rgb_list

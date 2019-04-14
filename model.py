@@ -1,7 +1,4 @@
-from PyQt5.QtGui import QColor
-
 from myparser import Parser
-from view import MainWindow
 
 
 class AnimationModel:
@@ -27,8 +24,8 @@ class AnimationModel:
         frame = None
         if self.is_meta_loaded:
             frame = self.parser.read_frame(self.width, self.height, self.current_frame == self.frames_num)
-            self.current_frame += 1
+            if self.current_frame == self.frames_num:
+                self.current_frame = 1
+            else:
+                self.current_frame += 1
         return frame
-
-    def draw_frame(self):
-        pass
