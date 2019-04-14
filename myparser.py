@@ -24,7 +24,7 @@ class Parser:
     def read_frame(self, width, height, is_last_frame=False):
         start_time = time.time()
         self.file.seek(self.file_handle, 0)
-        min_block_size = 12 * width * height
+        min_block_size = 14 * width * height
         block = self.file.read(min_block_size)
         while block[-2:] != "]]":
             block = block + self.file.read(1)
