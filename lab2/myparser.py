@@ -33,5 +33,5 @@ class Parser:
             self.file_handle = self.start_frame_handle
         else:
             self.file_handle = self.file.tell() + 1
-        print("--- %s seconds ---" % (time.time() - start_time))
+        print("--- parsing %s seconds ---" % (time.time() - start_time))
         return rgb_list

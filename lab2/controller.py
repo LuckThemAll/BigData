@@ -1,4 +1,6 @@
 import threading
+import time
+
 from PyQt5 import QtWidgets
 from model import AnimationModel
 
@@ -22,6 +24,8 @@ class Controller:
     def start_animation(self):
         if self.animation.is_meta_loaded:
             frame = self.animation.get_frame()
+            start_time = time.time()
             self.view.set_frame(frame)
+            print("--- showing in %s seconds ---" % (time.time() - start_time))
             if not self.stop_animation:
                 threading.Timer(0.01, self.start_animation).start()
