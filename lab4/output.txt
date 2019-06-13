@@ -1,0 +1,24 @@
+(venv) C:\Users\Artem\Desktop\BigData\lab4>py "C:\Users\Artem\Desktop\BigData\lab4\lab4.py" "C:\Users\Artem\Desktop\BigData\lab4\db2.txt"
+No configs found; falling back on auto-configuration
+No configs specified for inline runner
+Creating temp directory C:\Users\Artem\AppData\Local\Temp\lab4.Artem.20190613.122947.088181
+Running step 1 of 2...
+Running step 2 of 2...
+job output is in C:\Users\Artem\AppData\Local\Temp\lab4.Artem.20190613.122947.088181\output
+Streaming final output from C:\Users\Artem\AppData\Local\Temp\lab4.Artem.20190613.122947.088181\output...
+610     не
+605     тужи
+600     дорогой
+595     и
+590     неe
+585     ахай
+580     жизнь
+575     держи
+570     как
+565     кон€
+560     за
+555     узду
+350     ьэ€и
+341     неск
+341     члеу
+Removing temp directory C:\Users\Artem\AppData\Local\Temp\mrpoem1.Artem.20190613.122947.088181...
